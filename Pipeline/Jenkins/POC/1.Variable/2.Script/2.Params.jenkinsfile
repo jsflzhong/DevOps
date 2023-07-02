@@ -1,0 +1,13 @@
+// Params NOT worked in Script!  NOT WORK!
+
+// Value null!
+node {
+     string(
+            description: '你需要在哪台机器上进行部署 ?',
+            name: 'deploy_hostname', 
+            defaultValue: 'host131', 
+    )
+    stage ('stage1') {
+        println(params.deploy_hostname)
+    }
+}

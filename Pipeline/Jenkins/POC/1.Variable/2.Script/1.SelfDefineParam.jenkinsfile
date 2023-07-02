@@ -1,0 +1,32 @@
+//It's actually using the Groovy's syntax
+String var1 = '@@@test1'
+node {
+    stage ('stage1') {
+        println(var1)
+    }
+}
+
+
+/* Groovy中的变量可以通过两种方式定义 - 使用数据类型的本地语法，或者使用def关键字。对于变量定义，必须明确提供类型名称或在替换中使用“def”。这是Groovy解析器需要的。
+
+Groovy中有以下基本类型的变量，如上一章所述 -
+
+byte - 这用于表示字节值。例如2。
+
+short - 用于表示一个短数。例如10。
+
+int - 这用于表示整数。 例如1234。
+
+long - 这用于表示一个长数。例如10000090。
+
+float - 用于表示32位浮点数。例如12.34。
+
+double - 这用于表示64位浮点数。例如12.3456565。
+
+char - 这定义了单个字符文字。例如'a'。
+
+Boolean - 这表示一个布尔值，可以是true或false。
+
+String - 这是以字符串形式表示的文本。 例如“Hello World”。
+
+Groovy还允许其他类型的变量，如数组，结构和类，我们将在后续章节中看到 */

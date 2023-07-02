@@ -1,0 +1,89 @@
+pipeline {
+  agent any
+ 
+  stages {
+    stage ('stage1') {
+        steps {
+            // Read build-in currentBuild variables
+            echo currentBuild.id
+        }
+    }
+    stage ('stage2') {
+        steps {
+            // Read build-in currentBuild variables
+            // dont' use var 'result', will result in 'null'.
+            echo currentBuild.currentResult
+        }
+    }
+  }
+}
+
+
+/* 	The currentBuild variable, which is of type RunWrapper, may be used to refer to the currently running build. It has the following readable properties:
+		getBuildCauses
+			Returns a JSON array of build causes for the current build
+		EXPERIMENTAL - MAY CHANGE getBuildCauses(String causeClass)
+			Takes a string representing the fully qualified Cause class and returns a JSON array of build causes filtered by that type for the current build, or an empty JSON array if no causes of the specified type apply to the current build
+		number
+			build number (integer)
+		result
+			typically SUCCESS, UNSTABLE, or FAILURE (may be null for an ongoing build)
+		currentResult
+			typically SUCCESS, UNSTABLE, or FAILURE. Will never be null.
+		resultIsBetterOrEqualTo(String)
+			Compares the current build result to the provided result string (SUCCESS, UNSTABLE, or FAILURE) and returns true if the current build result is better than or equal to the provided result.
+		resultIsWorseOrEqualTo(String)
+			Compares the current build result to the provided result string (SUCCESS, UNSTABLE, or FAILURE) and returns true if the current build result is worse than or equal to the provided result.
+		displayName
+			normally #123 but sometimes set to, e.g., an SCM commit identifier.
+		fullDisplayName
+			normally folder1 » folder2 » foo #123.
+		projectName
+			Name of the project of this build, such as foo.
+		fullProjectName
+			Full name of the project of this build, including folders such as folder1/folder2/foo.
+		description
+			additional information about the build
+		id
+			normally number as a string
+		timeInMillis
+			time since the epoch when the build was scheduled
+		startTimeInMillis
+			time since the epoch when the build started running
+		duration
+			duration of the build in milliseconds
+		durationString
+			a human-readable representation of the build duration
+		previousBuild
+			previous build of the project, or null
+		previousBuildInProgress
+			previous build of the project that is currently building, or null
+		previousBuiltBuild
+			previous build of the project that has been built (may be currently building), or null
+		previousCompletedBuild
+			previous build of the project that has last finished building, or null
+		previousFailedBuild
+			previous build of the project that has last failed to build, or null
+		previousNotFailedBuild
+			previous build of the project that did not fail to build (eg. result is successful or unstable), or null
+		previousSuccessfulBuild
+			previous build of the project that has successfully built, or null
+		nextBuild
+			next build of the project, or null
+		absoluteUrl
+			URL of build index page
+		buildVariables
+			for a non-Pipeline downstream build, offers access to a map of defined build variables; for a Pipeline downstream build, any variables set globally on env at the time the build ends. Child Pipeline jobs can use this to report additional information to the parent job by setting variables in env. Note that build parameters are not shown in buildVariables.
+		changeSets
+			a list of changesets coming from distinct SCM checkouts; each has a kind and is a list of commits; each commit has a commitId, timestamp, msg, author, and affectedFiles each of which has an editType and path; the value will not generally be Serializable so you may only access it inside a method marked @NonCPS
+		upstreamBuilds
+			a list of upstream builds. These are the builds of the upstream projects whose artifacts feed into this build.
+		rawBuild
+			a hudson.model.Run with further APIs, only for trusted libraries or administrator-approved scripts outside the sandbox; the value will not be Serializable so you may only access it inside a method marked @NonCPS
+		keepLog
+			true if the log file for this build should be kept and not deleted.
+	Additionally, for this build only (but not for other builds), the following properties are writable:
+		• result
+		• displayName
+		• description
+		• keepLog */

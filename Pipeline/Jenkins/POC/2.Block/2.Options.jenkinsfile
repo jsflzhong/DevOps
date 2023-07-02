@@ -1,0 +1,31 @@
+// not necessary
+pipeline {
+  agent any
+  environment {
+    self1 = "pingping"
+  }
+  options{
+    timeout(time:30, unit:'SECONDS')
+    buildDiscarder(logRotator(numToKeepStr:'2'))
+    retry(2)
+    }   
+  stages {
+    stage ('stage1') {
+        steps {
+            echo env.BUILD_ID
+        }
+    }
+  }
+}
+
+/* 
+options：定义pipeline的专有属性
+参数
+不是必须出现的指令
+buildDiscarder：保持构建的最大个数
+disableConcurrentBuilds：不允许并行执行pipeline任务
+timeout：pipeline 超时时间
+retry：失败后，重试整个Pipeline的次数
+timestamps：预定义由Pipeline生成的所有控制台输出时间
+skipStagesAfterUnstable：一旦构建状态进入了“Unstable”状态，就跳过此stage
+ */

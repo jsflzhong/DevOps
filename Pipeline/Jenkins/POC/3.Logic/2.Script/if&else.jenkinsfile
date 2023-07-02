@@ -1,0 +1,10 @@
+node{
+    String var1 = "1"
+    stage('Example'){
+        if (var1 == "1"){
+            println('@@@yes')
+        }else{
+            println('@@@no')
+        }
+    }
+}

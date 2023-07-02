@@ -1,0 +1,21 @@
+// not necessary
+pipeline {
+  agent any
+  // not tested yet, can also config in Jenkins for 6 kind of triggers.
+  triggers{
+        pollSCM('* 30 * * * ?')
+    } 
+  stages {
+    stage ('stage1') {
+        steps {
+            echo "@@@1"
+        }
+    }
+  }
+}
+
+/* 
+不是必须出现的指令
+Cron：接受—个cron风格的字符串来定义Pipeline触发的常规间隔
+pollSCM：接受一个cron风格的字符串来定义 Jenkins检查SCM源更改的常规间隔；如果存在新的更改，则Pipeline将被重新触发。
+ */

@@ -1,0 +1,24 @@
+//Not necessary
+pipeline {
+  agent any
+  environment {
+    self1 = "pingping"
+  }
+  stages {
+    stage ('stage1') {
+        steps {
+            // Read build-in env variables
+            echo env.BUILD_ID
+        }
+    }
+  }
+  post {
+    success{
+        echo '@@@Success then running this after all ...'
+        sleep 2
+    }
+    always{
+        echo '@@@Always running this after all ...'
+    }
+  }
+}
