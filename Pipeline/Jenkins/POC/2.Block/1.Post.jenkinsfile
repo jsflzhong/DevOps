@@ -20,5 +20,9 @@ pipeline {
     always{
         echo '@@@Always running this after all ...'
     }
+    failure {
+        //Can send email
+        //mail to: team@example.com, subject: 'The Pipeline failed :('
+    }
   }
 }
