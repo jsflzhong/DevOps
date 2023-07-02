@@ -1,0 +1,13 @@
+{
+    "cloudcode.active-kubeconfig": "minikube-config",
+    "cloudcode.kubeconfigs": [
+        {
+            "name": "config-rh-worker0",
+            "configPath": "/Users/alknopfler/.kube/config-rh-worker0"
+        },
+        {
+            "name": "minikube-config",
+            "configPath": "/home/alknopfler/.kube/config"
+        }
+    ]
+}

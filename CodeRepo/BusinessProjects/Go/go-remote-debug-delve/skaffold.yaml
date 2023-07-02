@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+build:
+  artifacts:
+  - image: quay.io/amorgant/server-debug
+    buildpacks:
+      builder: gcr.io/buildpacks/builder:v1
+    context: .
+    sync: 
+      auto: true 
+  local:
+    push: true
+deploy:
+  kubectl:
+    manifests:
+    - k8s/deployment.yml

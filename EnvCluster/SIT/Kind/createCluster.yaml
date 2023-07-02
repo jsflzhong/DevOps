@@ -22,3 +22,7 @@ nodes:
     hostPort: 8080
   - containerPort: 3000
     hostPort: 3000
+  #Add this for PV/PVC
+  extraMounts:
+    - hostPath: /home/jsflzhong/kind/data
+      containerPath: /kindData

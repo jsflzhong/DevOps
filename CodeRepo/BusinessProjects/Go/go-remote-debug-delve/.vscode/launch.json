@@ -1,0 +1,71 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Kubernetes Pod (Go)",
+            "type": "cloudcode.kubernetes",
+            "request": "attach",
+            "language": "Go",
+            "debugPort": 40000,
+            "podSelector": {
+                "app": "server-debug"
+            },
+            "localRoot": "${workspaceFolder}",
+            "remotePath": "", //TBD
+            "remoteRoot": "/" //TBD
+        },
+        {
+            "name": "Kubernetes: Run/Debug", 
+            "type": "cloudcode.kubernetes",
+            "request": "launch",
+            "autoStop": false,  //If you set this to true, the debugging session stops automatically when the application terminates.
+            "skaffoldConfig": "${workspaceFolder}/skaffold.yaml", //This is the configuration file that continuously builds and deploys the application.
+            "watch": true, // This is the most important option for debugging interactively. It notifies Skaffold of changes in your code, so that Skaffold can rebuild and redeploy the new image while you're debugging and recoding. Also, if you enable the auto-save option, this process will be constantly running.
+            "cleanUp": true,  //This leaves the server in a clean state after your session. It destroys the containers and images created by Skaffold after you stop the debugger.
+            "portForward": true,  //This option allows you to run the debugger remotely by port forwarding to your local environment.
+            "imageRegistry": "quay.io",
+            "debug": [  //This is the image you will build with the Delve debugger installed, along with your application.
+                {
+                    "image": "quay.io/amorgant/server-debug",
+                    "containerName": "server-debug",
+                    "sourceFileMap": {
+                        "${workspaceFolder}": ""
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Kubernetes: Run/Debug",
+            "type": "cloudcode.kubernetes",
+            "request": "launch",
+            "autoStop": false,
+            "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+            "watch": true,
+            "cleanUp": true,
+            "portForward": true,
+            "imageRegistry": "quay.io",
+            "debug": [
+                {
+                    "image": "quay.io/amorgant/server-debug",
+                    "containerName": "server-debug",
+                    "sourceFileMap": {
+                        "${workspaceFolder}": ""
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Attach to Kubernetes Pod (Go)",
+            "type": "cloudcode.kubernetes",
+            "request": "attach",
+            "language": "Go",
+            "debugPort": 40000,
+            "podSelector": {
+                "app": "server-debug"
+            },
+            "localRoot": "${workspaceFolder}",
+            "remotePath": "",
+            "remoteRoot": "/"
+        }
+    ]
+}

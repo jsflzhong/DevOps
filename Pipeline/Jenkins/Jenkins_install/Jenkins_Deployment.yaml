@@ -1,3 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-jsflzhong
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  hostPath:
+    path: /kindData/
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-jsflzhong
+spec:
+  volumeName: pv-jsflzhong
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,7 +58,9 @@ spec:
             mountPath: /var/jenkins_vol
       volumes:
         - name: jenkins-vol
-          emptyDir: {}
+          #emptyDir: {}
+          persistentVolumeClaim:
+            claimName: pvc-jsflzhong
 ---
 apiVersion: v1
 kind: Service

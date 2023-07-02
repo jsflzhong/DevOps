@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-debug
+spec:
+  selector:
+    matchLabels:
+      app: server-debug
+  template:
+    metadata:
+      labels:
+        app: server-debug
+    spec:
+      containers:
+      - name: server-debug
+        image: quay.io/amorgant/server-debug
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
