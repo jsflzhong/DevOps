@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Stage 1') {
             steps {
-                echo '@@@Hello world 1 !'
+                echo '@@@Hello world 1 - branch=release1!'
             }
         }
         stage('Stage 2') {
