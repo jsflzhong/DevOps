@@ -1,0 +1,17 @@
+// use to test the lib: lib-poc-1.groovy
+
+//Way-1 to reference a lib. Tested.
+//library 'lib-poc-1'
+
+//Way-2 to reference a lib. Tested.
+@Library('lib-poc-1')_
+
+node {
+    stage ('stage-1') {
+        libPoc.printLib()
+    }
+
+    stage ('stage-2') {
+        libPoc.printLibWithParam("Pass this param to lib!")
+    }
+}

@@ -1,0 +1,4 @@
+// use to test the lib: lib-poc-1.groovy
+@Library('lib-poc-1')_
+
+libDeclarativePipeline.call()

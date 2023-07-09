@@ -1,10 +1,17 @@
 # DevOps-Jenkins-library
 
-For Jenkins library,  Since there is a conventional project structure as a MUST structure defined by Jenkins.
+For Jenkins library,  Since there is a conventional project structure structure defined by Jenkins.
 
-So I need to create a new project in GitHub just for POC Jenkins Library.
+So I have 2 choises.
 
-Refer to project for Jenkins Lib: DevOps-Jenkins-library, link : https://github.com/jsflzhong/DevOps-Jenkins-library
+1. Create a new project with default folder structure
+
+    Create a new project in GitHub just for POC Jenkins Library.
+
+    Refer to project for Jenkins Lib: DevOps-Jenkins-library, link : https://github.com/jsflzhong/DevOps-Jenkins-library
 
 
+2. Put library wherever I want, then config the specific path in Jenkins Golbal Library configuration.
+
+    
 
