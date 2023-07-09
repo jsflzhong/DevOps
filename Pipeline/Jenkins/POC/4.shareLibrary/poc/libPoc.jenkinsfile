@@ -4,7 +4,7 @@
 //library 'lib-poc-1'
 
 //Way-2 to reference a lib. Tested.
-@Library('lib-poc-1')_
+@Library('lib-poc-2')_
 
 node {
     stage ('stage-1') {
