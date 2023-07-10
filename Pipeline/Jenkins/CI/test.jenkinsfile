@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+        stage('Build') {
+            steps {
+                println("BUILDTIME_IMAGE_TAG:${env.BUILDTIME_IMAGE_TAG}")
+                println("MODULES:${env.MODULES}")
+                println("NOTIFICATION_EMAIL_ADDRESSES:${env.NOTIFICATION_EMAIL_ADDRESSES}")
+            }
+        }
+        stage('Test'){
+            steps {
+                echo 'make check'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'make publish'
+            }
+        }
+    }
+}
